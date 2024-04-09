@@ -13,23 +13,13 @@
 
 <div align="justify">
 
-<p>O Exitus é um Sistema de Gestão Escolar, que foi desenvolvido durante o ano de 2021 para o TCC da minha equipe no curso de Técnico de Informática pelo CETEPI-I da cidade de Paulo Afonso-BA.</p>
+<p>O Exitus é um Sistema de Gestão Escolar, que foi desenvolvido durante o ano de 2024 para o TCC da minha equipe no curso de Técnico de Informática do SmartBits</p>
   
 <p>O presente projeto visou a criação de uma aplicação web composta por 3 portais que são voltados para os gestores da escola, os docentes e os alunos.</p> 
   
 <img src="https://user-images.githubusercontent.com/60266964/173249538-4ba03e49-3891-4096-b5ab-2ada87c7c629.png">
   
 <br>
-  
-### Problema que originou a criação do projeto
-  
-<p>Como alunos do estado da Bahia, nós tínhamos à nossa disposição o Sistema de Gestão Escolar da Bahia (SGE). Contudo, esse sistema apenas fornecia o boletim do ano letivo, e infelizmente, muitas vezes nem tinha todas nossas notas. Tendo em vista essa baixa disponibilidade de dados, resolvemos criar uma aplicação semelhante ao SGE da Bahia, onde o aluno pudesse ter acesso a todos os dados vinculados a ele, ou seja: notas de avaliações, faltas, médias gerais, avisos da turma, rematrícula, entre outros.</p>
-  
-## Demonstração da Aplicação
-  
-<p>Como o projeto possui diversas funcionalidades, não vai ser possível falar sobre todas, por isso, logo abaixo, disponibilizamos um link para um vídeo do YouTube em que demonstramos de forma breve cada uma delas. Além disso, nos arquivos do projeto, existe o documento final do nosso TCC, nele também é descrito de forma detalhada cada funcionalidade integrada ao Exitus.</p>
-  
-[Demostração do projeto no YouTube](https://www.youtube.com/watch?v=MFScHaBRtDw&t=1984s)
   
 ### Algumas imagens do projeto
   
