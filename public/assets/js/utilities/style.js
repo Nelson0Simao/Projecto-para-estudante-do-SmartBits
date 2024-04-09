@@ -37,29 +37,30 @@ function getLocation() {
         $('.zipCode-info').remove()
         $('#zipCode').addClass('is-valid')
 
-        $.ajax({
-            type: 'GET',
-            url: `https://viacep.com.br/ws/${zipCode}/json/`,
-            dataType: 'json',
-            success: data => {
+        // $.ajax({
+        //     type: 'GET',
+        //     url: `https://viacep.com.br/ws/${zipCode}/json/`,
+        //     dataType: 'json',
+        //     success: data => {
+        //
+        //         $('#address').val(data.logradouro)
+        //         $('#district').val(data.bairro)
+        //         $('#county').val(data.localidade)
+        //         $('#uf').val(data.uf)
+        //         $('#zipCode').val(data.cep)
+        //
+        //         let validation = new Validation()
+        //
+        //         let address = ['county', 'district', 'address', 'uf']
+        //
+        //         address.forEach(element => validation.validateByContent(element))
+        //
+        //     },
+        //     error: erro => tools.showToast('CEP inválido', 'bg-danger')
+        // })
 
-                $('#address').val(data.logradouro)
-                $('#district').val(data.bairro)
-                $('#county').val(data.localidade)
-                $('#uf').val(data.uf)
-                $('#zipCode').val(data.cep)
-
-                let validation = new Validation()
-
-                let address = ['county', 'district', 'address', 'uf']
-
-                address.forEach(element => validation.validateByContent(element))
-
-            },
-            error: erro => tools.showToast('CEP inválido', 'bg-danger')
-        })
-
-    } else {
+    } 
+    else {
 
         $('#zipCode').removeClass('is-valid')
         $('.zipCode-info').remove()
