@@ -25,13 +25,13 @@ class Validation {
 
     biState(bi) {
 
-        let formattedCpf = bi.replace(/[^\d]/g, "")
+        let formatoBI = bi.replace(/[^\d]/g, "")
         let $biField = $('#biField')
         let message = '';
 
         $('.bi-info').remove()
 
-        if (formattedCpf.length == 11) {
+        if (formatoBI.length == 11) {
 
             if (!this.biAlreadyInformed()) {
 

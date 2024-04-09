@@ -151,7 +151,7 @@
                                 <div class="form-row mt-3">
 
                                     <div id="zipCodeField" class="form-group col-md-3">
-                                        <label for="zipCode">CEP:</label>
+                                        <label for="zipCode">Numero Postal:</label>
                                         <input type="text" id="zipCode" value="" class="form-control" name="zipCode" minlength="9">
                                     </div>
 
