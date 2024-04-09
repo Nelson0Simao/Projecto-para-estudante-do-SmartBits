@@ -1,7 +1,7 @@
 {
   "name": "public",
   "version": "1.0.0",
-  "description": "Sistema de Gestão Escolar - Exitus",
+  "description": "Sistema de Gestão Escolar - SmartBits",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

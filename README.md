@@ -13,7 +13,7 @@
 
 <div align="justify">
 
-<p>O Exitus é um Sistema de Gestão Escolar, que foi desenvolvido durante o ano de 2024 para o TCC da minha equipe no curso de Técnico de Informática do SmartBits</p>
+<p>O SmartBits é um Sistema de Gestão Escolar, que foi desenvolvido durante o ano de 2024 para o TCC da minha equipe no curso de Técnico de Informática do SmartBits</p>
   
 <p>O presente projeto visou a criação de uma aplicação web composta por 3 portais que são voltados para os gestores da escola, os docentes e os alunos.</p> 
   
@@ -64,7 +64,7 @@ Para testar o projeto no seu computador, primeiramente você deve realizar o seu
 Com o projeto baixado o próximo passo é criar a base de dados do sistema no phpMyAdmin, o comando de criação do BD segue abaixo:
 
 ```sh
-CREATE DATABASE Exitus;
+CREATE DATABASE SmartBits;
 ```
 
 > Obs: Lembrando que caso você deseje criar o banco de dados pelo Workbench, ou utilizar um nome diferente no BD, só é necessário mudar as pré-definições do aqruivo "Connection.php".
@@ -85,7 +85,7 @@ O primeiro portal que você deve acessar é o portal do admin, nele você irá c
 | ------ | ------ |
 | Usuário Padrão | 867532 |
 
-Caso você deseje conhecer como funciona cada componente do sistema dentro da pasta de download há o PDF da documentação do TCC da nossa equipe, nele está a explição de cada componente do Exitus.
+Caso você deseje conhecer como funciona cada componente do sistema dentro da pasta de download há o PDF da documentação do TCC da nossa equipe, nele está a explição de cada componente do SmartBits.
   
   
 ## Autores

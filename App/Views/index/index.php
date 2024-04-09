@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bem vindo ao Exitus</title>
+    <title>Bem vindo ao SmartBits</title>
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/stylesheet.css">
@@ -34,7 +34,7 @@
 
         <div class="row">
 
-            <p class="text-center text-white col-lg-12 title" data-aos="fade-up" data-aos-duration="2000">Bem vindo ao Exitus, escolha seu tipo de acesso: </p>
+            <p class="text-center text-white col-lg-12 title" data-aos="fade-up" data-aos-duration="2000">Bem vindo ao SmartBits, escolha seu tipo de acesso: </p>
 
             <div class="col-lg-10 mx-auto box">
 

@@ -11,7 +11,7 @@ isset($_SESSION['Teacher']) ? '' : header('Location: /portal-docente');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title> Exitus - Portal do docente</title>
+	<title> SmartBits - Portal do docente</title>
 	<link rel = "shortcut icon" type = "imagem/x-icon" href = "/assets/img/logo-components/logo.png"/>
 	<script> if (localStorage.getItem('nightModeTeacher')) { document.documentElement.classList.add('nightMode') } </script>
 	<link rel="stylesheet" href="/assets/css/stylesheet.css">

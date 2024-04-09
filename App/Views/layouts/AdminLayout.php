@@ -11,7 +11,7 @@ isset($_SESSION['Admin']) ? '' : header('Location: /admin');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title> Exitus - Portal do admin </title>
+	<title> SmartBits - Portal do admin </title>
 	<link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
 	<script> if (localStorage.getItem('nightModeAdmin')) { document.documentElement.classList.add('nightMode') } </script>

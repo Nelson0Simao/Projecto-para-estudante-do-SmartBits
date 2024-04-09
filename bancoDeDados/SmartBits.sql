@@ -1,11 +1,17 @@
+-- Meu script para cria o banco de dado automaticamente
+
+CREATE DATABASE IF NOT EXISTS SmartBits;
+
+
+
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 19-Jan-2022 às 00:56
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 7.4.27
+-- Host: localhost
+-- Tempo de geração: 09-Abr-2024 às 17:54
+-- Versão do servidor: 10.4.32-MariaDB
+-- versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +24,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `Exitus`
+-- Banco de dados: `SmartBits`
 --
 
 -- --------------------------------------------------------
@@ -44,8 +50,14 @@ CREATE TABLE `administrador` (
   `fk_id_tipo_sanguineo_administrador` int(11) DEFAULT NULL,
   `email_administrador` varchar(100) DEFAULT NULL,
   `fk_id_situacao_conta_administrador` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Extraindo dados da tabela `administrador`
+--
+
+INSERT INTO `administrador` (`id_administrador`, `nome_administrador`, `codigo_acesso`, `fk_id_administrador_hierarquia_funcao`, `fk_id_telefone_administrador`, `fk_id_endereco_administrador`, `data_nascimento_administrador`, `bi_administrador`, `naturalidade_administrador`, `nacionalidade_administrador`, `foto_perfil_administrador`, `fk_id_sexo_administrador`, `fk_id_pcd_administrador`, `fk_id_tipo_sanguineo_administrador`, `email_administrador`, `fk_id_situacao_conta_administrador`) VALUES
+(1, 'Nelson Simão', 1234, 1, 1, 1, '2001-10-09', 73893245723, 'Paulo Afonso', 'Brasileiro', 'foto-vazia.jpg', 1, 1, 1, 'usuariopadrao@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +85,16 @@ CREATE TABLE `aluno` (
   `email_aluno` varchar(100) DEFAULT NULL,
   `fk_id_situacao_geral_aluno` int(11) NOT NULL,
   `data_matricula_inicial` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `aluno`
+--
+
+INSERT INTO `aluno` (`id_aluno`, `nome_aluno`, `bi_aluno`, `fk_id_sexo_aluno`, `data_nascimento_aluno`, `naturalidade_aluno`, `foto_perfil_aluno`, `nacionalidade_aluno`, `nome_mae`, `nome_pai`, `fk_id_tipo_sanguineo_aluno`, `fk_id_aluno_pcd`, `fk_id_endereco_aluno`, `fk_id_telefone_aluno`, `codigo_acesso`, `fk_id_aluno_hierarquia_funcao`, `email_aluno`, `fk_id_situacao_geral_aluno`, `data_matricula_inicial`) VALUES
+(1, 'Eva Zulina', 22222222222, 2, '2006-01-01', 'Angolana', NULL, 'Angolana', 'Não sei ', 'Não sei', 1, 1, 2, 2, 726296, 4, 'test@test.com', 1, '2024-02-27 17:55:45');
+
+-- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `avaliacoes`
@@ -87,8 +108,7 @@ CREATE TABLE `avaliacoes` (
   `data_realizada` datetime NOT NULL DEFAULT current_timestamp(),
   `fk_id_turma_disciplina_avaliacao` int(11) NOT NULL,
   `data_postagem` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -101,8 +121,7 @@ CREATE TABLE `aviso_turma` (
   `aviso` text DEFAULT NULL,
   `fk_id_turma_disciplina` int(11) NOT NULL,
   `data_postagem` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -113,7 +132,19 @@ CREATE TABLE `aviso_turma` (
 CREATE TABLE `cedula_turma` (
   `id_cedula_turma` int(11) NOT NULL,
   `cedula` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `cedula_turma`
+--
+
+INSERT INTO `cedula_turma` (`id_cedula_turma`, `cedula`) VALUES
+(1, 'A'),
+(2, 'B'),
+(3, 'C'),
+(4, 'D'),
+(5, 'E'),
+(6, 'F');
 
 -- --------------------------------------------------------
 
@@ -125,7 +156,14 @@ CREATE TABLE `configuracao` (
   `id_configuracao` int(11) NOT NULL,
   `fk_id_controle_unidade` int(11) NOT NULL,
   `fk_id_controle_rematricula` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `configuracao`
+--
+
+INSERT INTO `configuracao` (`id_configuracao`, `fk_id_controle_unidade`, `fk_id_controle_rematricula`) VALUES
+(1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -136,8 +174,15 @@ CREATE TABLE `configuracao` (
 CREATE TABLE `controle_rematricula` (
   `id_situacao_abertura_rematricula` int(11) NOT NULL,
   `situacao` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Extraindo dados da tabela `controle_rematricula`
+--
+
+INSERT INTO `controle_rematricula` (`id_situacao_abertura_rematricula`, `situacao`) VALUES
+(1, 'Aberta'),
+(2, 'Fechada');
 
 -- --------------------------------------------------------
 
@@ -148,8 +193,16 @@ CREATE TABLE `controle_rematricula` (
 CREATE TABLE `controle_unidade` (
   `id_controle_unidade` int(11) NOT NULL,
   `situacao` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Extraindo dados da tabela `controle_unidade`
+--
+
+INSERT INTO `controle_unidade` (`id_controle_unidade`, `situacao`) VALUES
+(1, 'Somente a Primeira'),
+(2, 'Primeira e Segunda'),
+(3, 'Todas');
 
 -- --------------------------------------------------------
 
@@ -162,7 +215,15 @@ CREATE TABLE `curso` (
   `nome_curso` varchar(45) NOT NULL,
   `sigla` varchar(4) NOT NULL,
   `fk_id_modalidade_curso` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `curso`
+--
+
+INSERT INTO `curso` (`id_curso`, `nome_curso`, `sigla`, `fk_id_modalidade_curso`) VALUES
+(1, 'Informatica', 'INFO', 1),
+(2, 'Engenharia Informatica', 'I', 1);
 
 -- --------------------------------------------------------
 
@@ -175,7 +236,15 @@ CREATE TABLE `disciplina` (
   `nome_disciplina` varchar(80) NOT NULL,
   `fk_id_modalidade_disciplina` int(11) NOT NULL,
   `sigla_disciplina` varchar(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `disciplina`
+--
+
+INSERT INTO `disciplina` (`id_disciplina`, `nome_disciplina`, `fk_id_modalidade_disciplina`, `sigla_disciplina`) VALUES
+(1, 'Programação', 1, 'P'),
+(2, 'Fisica', 1, 'F');
 
 -- --------------------------------------------------------
 
@@ -190,7 +259,15 @@ CREATE TABLE `endereco` (
   `endereco` varchar(45) NOT NULL,
   `uf` varchar(2) NOT NULL,
   `municipio` varchar(85) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `endereco`
+--
+
+INSERT INTO `endereco` (`id_endereco`, `cep`, `bairro`, `endereco`, `uf`, `municipio`) VALUES
+(1, 48601340, 'Centro', 'Rua São Jorge n 100', 'BA', 'Paulo Afonso'),
+(2, 64207570, 'Planalto de Monteserra The', 'Rua São Benedito', 'PI', 'Parnaíba');
 
 -- --------------------------------------------------------
 
@@ -205,8 +282,7 @@ CREATE TABLE `falta_aluno` (
   `fk_id_unidade_falta` int(11) NOT NULL,
   `fk_id_matricula_falta` int(11) NOT NULL,
   `data_postagem` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -217,7 +293,17 @@ CREATE TABLE `falta_aluno` (
 CREATE TABLE `hierarquia_funcao` (
   `id_hierarquia_funcao` int(11) NOT NULL,
   `hierarquia_funcao` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `hierarquia_funcao`
+--
+
+INSERT INTO `hierarquia_funcao` (`id_hierarquia_funcao`, `hierarquia_funcao`) VALUES
+(1, 'Administrador'),
+(2, 'Co-administrador'),
+(3, 'Docente'),
+(4, 'Aluno');
 
 -- --------------------------------------------------------
 
@@ -229,7 +315,18 @@ CREATE TABLE `legenda` (
   `id_legenda` int(11) NOT NULL,
   `legenda` varchar(45) NOT NULL,
   `sigla` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `legenda`
+--
+
+INSERT INTO `legenda` (`id_legenda`, `legenda`, `sigla`) VALUES
+(1, 'Aprovado', 'AP'),
+(2, 'Reprovado', 'RP'),
+(3, 'Regime de Progressão Parcial', 'RPP'),
+(4, 'Reprovado por Falta', 'RPF'),
+(5, 'Recuperação Final', 'RF');
 
 -- --------------------------------------------------------
 
@@ -244,7 +341,14 @@ CREATE TABLE `matricula` (
   `fk_id_turma_matricula` int(11) NOT NULL,
   `fk_id_situacao_aluno` int(11) NOT NULL,
   `fk_id_periodo_letivo_matricula` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `matricula`
+--
+
+INSERT INTO `matricula` (`id_matricula`, `data_hora_matricula`, `fk_id_aluno`, `fk_id_turma_matricula`, `fk_id_situacao_aluno`, `fk_id_periodo_letivo_matricula`) VALUES
+(1, NULL, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -259,7 +363,7 @@ CREATE TABLE `media_disciplina` (
   `nota_valor` float NOT NULL,
   `fk_id_legenda` int(11) NOT NULL,
   `data_postagem` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -271,7 +375,15 @@ CREATE TABLE `modalidade_curso` (
   `id_modalidade_curso` int(11) NOT NULL,
   `modalidade_curso` varchar(60) NOT NULL,
   `modalidade_curso_sigla` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `modalidade_curso`
+--
+
+INSERT INTO `modalidade_curso` (`id_modalidade_curso`, `modalidade_curso`, `modalidade_curso_sigla`) VALUES
+(1, 'Ensino Médio', 'EM'),
+(2, 'Ensino Profissional, médio integrado', 'ET');
 
 -- --------------------------------------------------------
 
@@ -282,7 +394,15 @@ CREATE TABLE `modalidade_curso` (
 CREATE TABLE `modalidade_disciplina` (
   `id_modalidade_disciplina` int(11) NOT NULL,
   `modalidade_disciplina` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `modalidade_disciplina`
+--
+
+INSERT INTO `modalidade_disciplina` (`id_modalidade_disciplina`, `modalidade_disciplina`) VALUES
+(1, 'Ensino Técnico'),
+(2, 'Ensino Médio');
 
 -- --------------------------------------------------------
 
@@ -296,7 +416,7 @@ CREATE TABLE `nota_avaliacao` (
   `fk_id_avaliacao` int(11) NOT NULL,
   `valor_nota` float NOT NULL,
   `data_postagem` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -307,7 +427,53 @@ CREATE TABLE `nota_avaliacao` (
 CREATE TABLE `numero_sala_aula` (
   `id_numero_sala_aula` int(11) NOT NULL,
   `numero_sala_aula` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `numero_sala_aula`
+--
+
+INSERT INTO `numero_sala_aula` (`id_numero_sala_aula`, `numero_sala_aula`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10),
+(11, 11),
+(12, 12),
+(13, 13),
+(14, 14),
+(15, 15),
+(16, 16),
+(17, 17),
+(18, 18),
+(19, 19),
+(20, 20),
+(21, 21),
+(22, 22),
+(23, 23),
+(24, 24),
+(25, 25),
+(26, 26),
+(27, 27),
+(28, 28),
+(29, 29),
+(30, 30),
+(31, 31),
+(32, 32),
+(33, 33),
+(34, 34),
+(35, 35),
+(36, 36),
+(37, 37),
+(38, 38),
+(39, 39),
+(40, 40);
 
 -- --------------------------------------------------------
 
@@ -322,7 +488,7 @@ CREATE TABLE `observacao_aluno` (
   `descricao` text NOT NULL,
   `fk_id_matricula_observacao` int(11) NOT NULL,
   `data_postagem` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -333,7 +499,15 @@ CREATE TABLE `observacao_aluno` (
 CREATE TABLE `pcd` (
   `id_pcd` int(11) NOT NULL,
   `pcd` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `pcd`
+--
+
+INSERT INTO `pcd` (`id_pcd`, `pcd`) VALUES
+(1, 'Não'),
+(2, 'Sim');
 
 -- --------------------------------------------------------
 
@@ -344,7 +518,43 @@ CREATE TABLE `pcd` (
 CREATE TABLE `periodo_disponivel` (
   `id_periodo_disponivel` int(11) NOT NULL,
   `ano_letivo` year(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `periodo_disponivel`
+--
+
+INSERT INTO `periodo_disponivel` (`id_periodo_disponivel`, `ano_letivo`) VALUES
+(1, '2021'),
+(2, '2022'),
+(3, '2023'),
+(4, '2024'),
+(5, '2025'),
+(6, '2026'),
+(7, '2027'),
+(8, '2028'),
+(9, '2029'),
+(10, '2030'),
+(11, '2031'),
+(12, '2032'),
+(13, '2033'),
+(14, '2034'),
+(15, '2035'),
+(16, '2036'),
+(17, '2037'),
+(18, '2038'),
+(19, '2039'),
+(20, '2040'),
+(21, '2041'),
+(22, '2042'),
+(23, '2043'),
+(24, '2044'),
+(25, '2045'),
+(26, '2046'),
+(27, '2047'),
+(28, '2048'),
+(29, '2049'),
+(30, '2050');
 
 -- --------------------------------------------------------
 
@@ -358,7 +568,14 @@ CREATE TABLE `periodo_letivo` (
   `data_inicio` date NOT NULL,
   `data_fim` date NOT NULL,
   `fk_id_situacao_periodo_letivo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `periodo_letivo`
+--
+
+INSERT INTO `periodo_letivo` (`id_ano_letivo`, `fk_id_ano_letivo`, `data_inicio`, `data_fim`, `fk_id_situacao_periodo_letivo`) VALUES
+(1, 1, '2021-02-01', '2021-12-01', 1);
 
 -- --------------------------------------------------------
 
@@ -384,7 +601,7 @@ CREATE TABLE `professor` (
   `fk_id_professor_hierarquia_funcao` int(11) NOT NULL,
   `email_professor` varchar(100) DEFAULT NULL,
   `fk_id_situacao_conta_professor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -396,7 +613,7 @@ CREATE TABLE `rematricula` (
   `id_rematricula` int(11) NOT NULL,
   `fk_id_rematricula_aluno` int(11) NOT NULL,
   `fk_id_situacao_rematricula` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -408,7 +625,14 @@ CREATE TABLE `sala` (
   `id_sala` int(11) NOT NULL,
   `fk_id_numero_sala` int(11) NOT NULL,
   `capacidade_alunos` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `sala`
+--
+
+INSERT INTO `sala` (`id_sala`, `fk_id_numero_sala`, `capacidade_alunos`) VALUES
+(1, 1, 30);
 
 -- --------------------------------------------------------
 
@@ -420,7 +644,16 @@ CREATE TABLE `serie` (
   `id_serie` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `sigla` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `serie`
+--
+
+INSERT INTO `serie` (`id_serie`, `nome`, `sigla`) VALUES
+(1, 'Primeira', '1'),
+(2, 'Segunda', '2'),
+(3, 'Terceira', '3');
 
 -- --------------------------------------------------------
 
@@ -431,7 +664,15 @@ CREATE TABLE `serie` (
 CREATE TABLE `sexo` (
   `id_sexo` int(11) NOT NULL,
   `sexo` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `sexo`
+--
+
+INSERT INTO `sexo` (`id_sexo`, `sexo`) VALUES
+(1, 'Masculino'),
+(2, 'Feminino');
 
 -- --------------------------------------------------------
 
@@ -442,7 +683,17 @@ CREATE TABLE `sexo` (
 CREATE TABLE `situacao_aluno_ano_letivo` (
   `id_situacao_aluno` int(11) NOT NULL,
   `situacao_aluno` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `situacao_aluno_ano_letivo`
+--
+
+INSERT INTO `situacao_aluno_ano_letivo` (`id_situacao_aluno`, `situacao_aluno`) VALUES
+(1, 'Matriculado'),
+(2, 'Aprovado'),
+(3, 'Reprovado'),
+(4, 'Mudou de turma');
 
 -- --------------------------------------------------------
 
@@ -453,7 +704,15 @@ CREATE TABLE `situacao_aluno_ano_letivo` (
 CREATE TABLE `situacao_conta` (
   `id_situacao_conta` int(11) NOT NULL,
   `situacao_conta` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `situacao_conta`
+--
+
+INSERT INTO `situacao_conta` (`id_situacao_conta`, `situacao_conta`) VALUES
+(1, 'Ativa'),
+(2, 'Desativada');
 
 -- --------------------------------------------------------
 
@@ -464,7 +723,16 @@ CREATE TABLE `situacao_conta` (
 CREATE TABLE `situacao_geral_aluno` (
   `id_situacao_geral` int(11) NOT NULL,
   `situacao_geral` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `situacao_geral_aluno`
+--
+
+INSERT INTO `situacao_geral_aluno` (`id_situacao_geral`, `situacao_geral`) VALUES
+(1, 'Matriculado'),
+(2, 'Desistente'),
+(3, 'Concluído');
 
 -- --------------------------------------------------------
 
@@ -475,7 +743,16 @@ CREATE TABLE `situacao_geral_aluno` (
 CREATE TABLE `situacao_periodo_letivo` (
   `id_situacao_periodo_letivo` int(11) NOT NULL,
   `situacao_periodo_letivo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `situacao_periodo_letivo`
+--
+
+INSERT INTO `situacao_periodo_letivo` (`id_situacao_periodo_letivo`, `situacao_periodo_letivo`) VALUES
+(1, 'Ativo'),
+(2, 'Finalizado'),
+(3, 'Agendado');
 
 -- --------------------------------------------------------
 
@@ -486,7 +763,15 @@ CREATE TABLE `situacao_periodo_letivo` (
 CREATE TABLE `situacao_rematricula` (
   `id_situacao_rematricula` int(11) NOT NULL,
   `situacao` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `situacao_rematricula`
+--
+
+INSERT INTO `situacao_rematricula` (`id_situacao_rematricula`, `situacao`) VALUES
+(1, 'Sim'),
+(2, 'Não');
 
 -- --------------------------------------------------------
 
@@ -497,7 +782,15 @@ CREATE TABLE `situacao_rematricula` (
 CREATE TABLE `telefone` (
   `id_telefone` int(11) NOT NULL,
   `numero_telefone` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `telefone`
+--
+
+INSERT INTO `telefone` (`id_telefone`, `numero_telefone`) VALUES
+(1, '75988787643'),
+(2, '22 222222222');
 
 -- --------------------------------------------------------
 
@@ -508,7 +801,22 @@ CREATE TABLE `telefone` (
 CREATE TABLE `tipo_sanguineo` (
   `id_tipo_sanguineo` int(11) NOT NULL,
   `tipo_sanguineo` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `tipo_sanguineo`
+--
+
+INSERT INTO `tipo_sanguineo` (`id_tipo_sanguineo`, `tipo_sanguineo`) VALUES
+(1, 'Não informado'),
+(2, 'AB+'),
+(3, 'AB-'),
+(4, 'A+'),
+(5, 'A-'),
+(6, 'B+'),
+(7, 'B-'),
+(8, 'O+'),
+(9, 'O-');
 
 -- --------------------------------------------------------
 
@@ -524,7 +832,15 @@ CREATE TABLE `turma` (
   `fk_id_serie` int(11) NOT NULL,
   `fk_id_sala` int(11) NOT NULL,
   `fk_id_cedula` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `turma`
+--
+
+INSERT INTO `turma` (`id_turma`, `fk_id_turno`, `fk_id_periodo_letivo`, `fk_id_curso`, `fk_id_serie`, `fk_id_sala`, `fk_id_cedula`) VALUES
+(1, 1, 1, 1, 1, 1, 2),
+(2, 2, 1, 2, 3, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -537,7 +853,7 @@ CREATE TABLE `turma_disciplina` (
   `fk_id_disciplina` int(11) NOT NULL,
   `fk_id_turma` int(11) NOT NULL,
   `fk_id_professor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -548,7 +864,16 @@ CREATE TABLE `turma_disciplina` (
 CREATE TABLE `turno` (
   `id_turno` int(11) NOT NULL,
   `nome_turno` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `turno`
+--
+
+INSERT INTO `turno` (`id_turno`, `nome_turno`) VALUES
+(1, 'Matutino'),
+(2, 'Vespertino'),
+(3, 'Noturno');
 
 -- --------------------------------------------------------
 
@@ -559,8 +884,16 @@ CREATE TABLE `turno` (
 CREATE TABLE `unidade` (
   `id_unidade` int(11) NOT NULL,
   `unidade` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Extraindo dados da tabela `unidade`
+--
+
+INSERT INTO `unidade` (`id_unidade`, `unidade`) VALUES
+(1, '1'),
+(2, '2'),
+(3, '3');
 
 --
 -- Índices para tabelas despejadas
@@ -871,241 +1204,241 @@ ALTER TABLE `unidade`
 -- AUTO_INCREMENT de tabela `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id_aluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_aluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
-  MODIFY `id_avaliacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_avaliacao` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `aviso_turma`
 --
 ALTER TABLE `aviso_turma`
-  MODIFY `id_aviso_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_aviso_turma` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `cedula_turma`
 --
 ALTER TABLE `cedula_turma`
-  MODIFY `id_cedula_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_cedula_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `configuracao`
 --
 ALTER TABLE `configuracao`
-  MODIFY `id_configuracao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_configuracao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `controle_rematricula`
 --
 ALTER TABLE `controle_rematricula`
-  MODIFY `id_situacao_abertura_rematricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_situacao_abertura_rematricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `controle_unidade`
 --
 ALTER TABLE `controle_unidade`
-  MODIFY `id_controle_unidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_controle_unidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `disciplina`
 --
 ALTER TABLE `disciplina`
-  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `endereco`
 --
 ALTER TABLE `endereco`
-  MODIFY `id_endereco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_endereco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `falta_aluno`
 --
 ALTER TABLE `falta_aluno`
-  MODIFY `id_falta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_falta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `hierarquia_funcao`
 --
 ALTER TABLE `hierarquia_funcao`
-  MODIFY `id_hierarquia_funcao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_hierarquia_funcao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `legenda`
 --
 ALTER TABLE `legenda`
-  MODIFY `id_legenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_legenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `matricula`
 --
 ALTER TABLE `matricula`
-  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `media_disciplina`
 --
 ALTER TABLE `media_disciplina`
-  MODIFY `id_media_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_media_disciplina` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `modalidade_curso`
 --
 ALTER TABLE `modalidade_curso`
-  MODIFY `id_modalidade_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_modalidade_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `modalidade_disciplina`
 --
 ALTER TABLE `modalidade_disciplina`
-  MODIFY `id_modalidade_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_modalidade_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `nota_avaliacao`
 --
 ALTER TABLE `nota_avaliacao`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `numero_sala_aula`
 --
 ALTER TABLE `numero_sala_aula`
-  MODIFY `id_numero_sala_aula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_numero_sala_aula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de tabela `observacao_aluno`
 --
 ALTER TABLE `observacao_aluno`
-  MODIFY `id_observacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_observacao` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `pcd`
 --
 ALTER TABLE `pcd`
-  MODIFY `id_pcd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_pcd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `periodo_disponivel`
 --
 ALTER TABLE `periodo_disponivel`
-  MODIFY `id_periodo_disponivel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_periodo_disponivel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `periodo_letivo`
 --
 ALTER TABLE `periodo_letivo`
-  MODIFY `id_ano_letivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_ano_letivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `id_professor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_professor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `rematricula`
 --
 ALTER TABLE `rematricula`
-  MODIFY `id_rematricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_rematricula` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `id_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `serie`
 --
 ALTER TABLE `serie`
-  MODIFY `id_serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `sexo`
 --
 ALTER TABLE `sexo`
-  MODIFY `id_sexo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_sexo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `situacao_aluno_ano_letivo`
 --
 ALTER TABLE `situacao_aluno_ano_letivo`
-  MODIFY `id_situacao_aluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_situacao_aluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `situacao_conta`
 --
 ALTER TABLE `situacao_conta`
-  MODIFY `id_situacao_conta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_situacao_conta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `situacao_geral_aluno`
 --
 ALTER TABLE `situacao_geral_aluno`
-  MODIFY `id_situacao_geral` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_situacao_geral` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `situacao_periodo_letivo`
 --
 ALTER TABLE `situacao_periodo_letivo`
-  MODIFY `id_situacao_periodo_letivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_situacao_periodo_letivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `situacao_rematricula`
 --
 ALTER TABLE `situacao_rematricula`
-  MODIFY `id_situacao_rematricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_situacao_rematricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `telefone`
 --
 ALTER TABLE `telefone`
-  MODIFY `id_telefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_telefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `tipo_sanguineo`
 --
 ALTER TABLE `tipo_sanguineo`
-  MODIFY `id_tipo_sanguineo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_tipo_sanguineo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `turma_disciplina`
 --
 ALTER TABLE `turma_disciplina`
-  MODIFY `id_turma_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_turma_disciplina` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `unidade`
 --
 ALTER TABLE `unidade`
-  MODIFY `id_unidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_unidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restrições para despejos de tabelas
